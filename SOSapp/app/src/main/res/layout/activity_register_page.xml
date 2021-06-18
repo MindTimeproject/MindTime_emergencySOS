@@ -45,6 +45,16 @@
             android:layout_margin="20dp"
             android:text="VIEW" />
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="To delete a Number Enter the Number and Press Delete Button"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
 

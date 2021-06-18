@@ -2,6 +2,7 @@ package com.example.sosapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -16,7 +17,7 @@ public class DatabseHandler extends SQLiteOpenHelper {
     public DatabseHandler(Context context) {super(context,DATABASE_NAME,null,1);}
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE"+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT,"+"ITEM1 TEXT)";
+        String createTable = "CREATE TABLE " + TABLE_NAME +"(ID INTEGER PRIMARY KEY AUTOINCREMENT,"+"ITEM1 TEXT)";
         db.execSQL( createTable );
     }
 
@@ -41,4 +42,5 @@ public class DatabseHandler extends SQLiteOpenHelper {
             return true;
         }
     }
+
 }

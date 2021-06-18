@@ -8,8 +8,8 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:layout_width="502dp"
-        android:layout_height="394dp"
+        android:layout_width="432dp"
+        android:layout_height="345dp"
         android:background="@drawable/Logo"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,17 +20,16 @@
         android:id="@+id/textView"
         android:layout_width="278dp"
         android:layout_height="91dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="100dp"
+        android:gravity="center_horizontal"
         android:text="Brings people closer during HEARTATTACKS"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="110dp"
-        android:gravity="center_horizontal"
-        tools:ignore="MissingConstraints" />
-
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="66dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
