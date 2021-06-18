@@ -1,17 +1,23 @@
 package com.example.sosapp;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.location.Location;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -123,8 +129,37 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void startTrack() {
+        if (ActivityCompat.checkSelfPermission(MainActivity2.this , Manifest.permission.ACCESS_FINE_LOCATION )
+                != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(MainActivity2.this,
+                Manifest.permission.ACCESS_COARSE_LOCATION )! =  PackageManager.PERMISSION_GRANTED ){
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_LOCATION);
+        }
+        else {
+            Location locationGPS= locationManager.getLastKnownLocation( LocationManager.GPS_PROVIDER );
+            if (locationGPS!=null){
+                double lat = locationGPS.getLatitude();
+                double lon = locationGPS.getLongitude();
+                x = String.valueOf( lat );
+                y = String.valueOf( lon);
+            }
+        }
     }
 
     private void onGPS() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder( this);
+        builder.setMessage( "Enable GPS" ).setCancelable(false).setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                startActivity(new Intent (Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+            }
+        }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();;
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
