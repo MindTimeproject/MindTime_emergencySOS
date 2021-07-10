@@ -7,7 +7,7 @@
     tools:context=".MainActivity2">
 
 
-    <TextArea
+    <TextView
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
@@ -18,7 +18,7 @@
         tools:layout_editor_absoluteY="529dp"
         tools:ignore="MissingConstraints" />
 
-    <TextArea
+    <ImageView
         android:id="@+id/emergencyButton"
         android:layout_width="401dp"
         android:layout_height="323dp"
